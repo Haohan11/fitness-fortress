@@ -1,0 +1,22 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7.24
+    restart: always
+    environment:
+      - MYSQL_ROOT_USER=root
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d 
+  frontend: 
+    image: haohan11/ff-nextjs:1.0.0
+    ports:
+      - '3000:3000'
+  backend: 
+    image: haohan11/ff-nodejs:1.0.0
+    extra_hosts: 
+      - "host.docker.internal:127.0.0.1"
+    ports:
+      - '3001:3001'
