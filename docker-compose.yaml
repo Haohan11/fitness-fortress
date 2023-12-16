@@ -11,14 +11,13 @@ services:
     volumes:
       - ./sql:/docker-entrypoint-initdb.d 
   frontend: 
-    image: haohan11/ff-nextjs:2.0.0
+    image: haohan11/ff-nextjs:3.0.0
     ports:
       - '3000:3000'
     environment:
-    - NEXT_PUBLIC_BACKEND_PORT=http://host.docker.internal:3001
+      - NEXT_PUBLIC_BACKEND_PORT=http://backend:3001
+      - NEXT_PUBLIC_BACKEND_PORT_LOCAL=http://localhost:3001
   backend: 
-    image: haohan11/ff-nodejs:1.0.0
-    extra_hosts: 
-      - "host.docker.internal:127.0.0.1"
+    image: haohan11/ff-nodejs:2.0.0
     ports:
       - '3001:3001'
