@@ -11,7 +11,7 @@ services:
     volumes:
       - ./sql:/docker-entrypoint-initdb.d 
   frontend: 
-    image: haohan11/ff-nextjs:3.0.0
+    image: haohan11/ff-nextjs:3.0.1
     ports:
       - '3000:3000'
     environment:
